@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Garagem | Cadastro de carros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header class="topo">
+        <h1>Garagem</h1>
+        <p>{{total}} carros no estoque</p>
+    </header>
+
+    <main>
+        <section class="painel">
+            <h2>{{titulo_form}}</h2>
+            <form method="post" action="/salvar" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="{{id}}">
+
+                <label>Marca
+                    <input type="text" name="marca" value="{{marca}}" required maxlength="50">
+                </label>
+                <label>Modelo
+                    <input type="text" name="modelo" value="{{modelo}}" required maxlength="80">
+                </label>
+                <div class="duas">
+                    <label>Ano
+                        <input type="number" name="ano" value="{{ano}}" required min="1900" max="2100">
+                    </label>
+                    <label>Cor
+                        <input type="text" name="cor" value="{{cor}}" maxlength="30">
+                    </label>
+                </div>
+                <label>Preço (R$)
+                    <input type="number" name="preco" value="{{preco}}" required min="0" step="0.01">
+                </label>
+
+                <label>Foto do carro
+                    <input type="file" name="imagem" accept="image/png, image/jpeg, image/webp, image/gif">
+                </label>
+                {{previa}}
+
+                <div class="botoes">
+                    <button class="btn" type="submit">{{botao}}</button>
+                    {{cancelar}}
+                </div>
+            </form>
+        </section>
+
+        <section class="lista">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Ano</th>
+                        <th>Cor</th>
+                        <th class="num">Preço</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{linhas}}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
